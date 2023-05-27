@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Student Grid</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Total Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.sname }}</td>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.total_marks }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <input type="text" id="filter_name" placeholder="Filter by name">
+        <input type="text" id="filter_id" placeholder="Filter by ID">
+        <input type="text" id="filter_marks" placeholder="Filter by total marks">
+        <button id="filter_button">Filter</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Bind the filter button to an event handler.
+            $("#filter_button").on("click", function() {
+                // Get the filter criteria from the UI.
+                var filter_name = $("#filter_name").val();
+                var filter_id = $("#filter_id").val();
+                var filter_marks = $("#filter_marks").val();
+
+                // Call the filter API.
+                $.ajax({
+                    url: "/api/filter_students",
+                    type: "POST",
+                    data: {
+                        filter_name: filter_name,
+                        filter_id: filter_id,
+                        filter_marks: filter_marks
+                    },
+                    success: function(response) {
+                        // Update the table with the filtered results.
+                        $("#table tbody").html(response.data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
