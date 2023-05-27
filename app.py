@@ -4,9 +4,9 @@ app = Flask(__name__)
 
 # Sample student data stored as a list of dictionaries
 students_data = [
-    {"id": 1, "name": "John Doe", "total_marks": 85},
-    {"id": 2, "name": "Jane Smith", "total_marks": 92},
-    {"id": 3, "name": "Alice Johnson", "total_marks": 78},
+    {"id": 1, "name": "Ganesh Prasad", "total_marks": 85},
+    {"id": 2, "name": "Jitu M", "total_marks": 92},
+    {"id": 3, "name": "Dev D", "total_marks": 78},
     # Add more student records here
 ]
 
